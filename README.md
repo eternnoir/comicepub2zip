@@ -12,7 +12,7 @@ This project provides a utility to convert EPUB files containing comics into ZIP
 
 ## Requirements
 
-- Go 1.16 or later
+- Go 1.22 or later
 
 ## Installation
 
