@@ -19,15 +19,15 @@ jobs:
       - name: Set current date as env variable
         run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v2
         with:
           go-version: 1.22.3
 
       - name: Cache Go modules
-        uses: actions/cache@v4
+        uses: actions/cache@v2
         with:
           path: |
             ~/.cache/go-build
@@ -45,7 +45,7 @@ jobs:
           GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o dist/comicepub2zip-${{ matrix.goos }}-${{ matrix.goarch }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: comicepub2zip-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/comicepub2zip-${{ matrix.goos }}-${{ matrix.goarch }}
@@ -55,7 +55,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Download artifacts (Linux AMD64)
         uses: actions/download-artifact@v2
